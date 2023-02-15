@@ -7,7 +7,8 @@ public class DoorBehaviour : MonoBehaviour
 
     private Vector3 doorStartingPosition;
 
-    [SerializeField] private float distanceToOpen;
+    [SerializeField] private float distanceToOpen;  
+    [SerializeField] private Animator doorAnimator;
 
     private void Start()
     {
@@ -19,5 +20,7 @@ public class DoorBehaviour : MonoBehaviour
         Debug.Log(message: "Door is Open! Promise");
 
         this.transform.position = new Vector3(doorStartingPosition.x + distanceToOpen, doorStartingPosition.y, doorStartingPosition.z);
+        doorAnimator.SetTrigger(name:"OpenTheDoor"); 
+      
     }
 }

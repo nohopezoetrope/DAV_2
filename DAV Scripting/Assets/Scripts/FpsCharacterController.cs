@@ -5,13 +5,16 @@ using UnityEngine;
 public class FpsCharacterController : MonoBehaviour
 {
 
-    [SerializeField] private float walkspeed = 5.0f;
+    [SerializeField] private float walkSpeed = 9.0f;
 
     private float verticalInput = 0.0f;
     private float horizontalInput = 0.0f;
     private float MouseInputX = 0.0f;
+    private float MouseInputY = 0.0f;
 
     private Rigidbody playerRb;
+
+    [SerializeField] private Transform cameraTransform;
 
     private Vector3 playerVelocity = new Vector3();
     
@@ -28,6 +31,7 @@ public class FpsCharacterController : MonoBehaviour
         MoveCharacter();
         GetMouseInputs();
         RotateCharacter();
+        RotateCamera();
     }
 
     private void GetInputs()
@@ -39,6 +43,7 @@ public class FpsCharacterController : MonoBehaviour
     private void GetMouseInputs()
     {
         MouseInputX = Input.GetAxis("Mouse X");
+        MouseInputY = Input.GetAxis("Mouse Y");
     }
        
     private void MoveCharacter()
@@ -56,5 +61,11 @@ public class FpsCharacterController : MonoBehaviour
     {
         this.transform.Rotate(xAngle: 0.0f, yAngle: MouseInputX, zAngle:0.0f);
     }
+
+    private void RotateCamera()
+    {
+        cameraTransform.Rotate(eulers: new Vector3(x:-MouseInputY, y:0.0f, z:0.0f));
+    }
+
 
 }

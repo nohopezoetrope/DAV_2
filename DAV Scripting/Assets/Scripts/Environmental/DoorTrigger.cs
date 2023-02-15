@@ -7,6 +7,7 @@ public class DoorTrigger : MonoBehaviour
 
     [SerializeField] private DoorBehaviour walkwayDoor;
 
+
     private void Start()
     {
         this.GetComponent<MeshRenderer>().enabled = false;
