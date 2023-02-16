@@ -34,6 +34,7 @@ public class FpsCharacterController : MonoBehaviour
         RotateCamera();
     }
 
+
     private void GetInputs()
     {
         verticalInput = Input.GetAxis("Vertical");
@@ -64,6 +65,8 @@ public class FpsCharacterController : MonoBehaviour
 
     private void RotateCamera()
     {
+        //Limit the range the camera can pitch
+        //Mouse movement sensitivity
         cameraTransform.Rotate(eulers: new Vector3(x:-MouseInputY, y:0.0f, z:0.0f));
     }
 

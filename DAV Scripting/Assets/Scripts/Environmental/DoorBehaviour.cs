@@ -13,6 +13,7 @@ public class DoorBehaviour : MonoBehaviour
     private void Start()
     {
         doorStartingPosition = this.transform.position;
+
     }
 
     public void OpenDoor()
