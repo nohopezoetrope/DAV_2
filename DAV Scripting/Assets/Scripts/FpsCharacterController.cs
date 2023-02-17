@@ -27,11 +27,16 @@ public class FpsCharacterController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        GetInputs();
-        MoveCharacter();
-        GetMouseInputs();
-        RotateCharacter();
-        RotateCamera();
+        if (GameStateManager.Instance.GetIsGameOver() == false)
+        {
+
+            GetInputs();
+            MoveCharacter();
+            GetMouseInputs();
+            RotateCharacter();
+            RotateCamera();
+        }
+        
     }
 
 
@@ -52,7 +57,7 @@ public class FpsCharacterController : MonoBehaviour
         playerVelocity = new Vector3(x: horizontalInput, y: 0.0f, z: verticalInput);
 
         //playerRb.velocity = forward * new Vector3 (0, 0, 1) or new Vector3 (0, 0, -1)
-        playerRb.velocity = this.transform.forward * verticalInput;
+        playerRb.velocity = this.transform.forward * (verticalInput * walkSpeed);
 
         //playerRb.velocity = right * new Vector3 (-1, 0, 1) or new Vector3 (1, 0, -1)
         playerRb.velocity = playerRb.velocity + this.transform.right * horizontalInput;
